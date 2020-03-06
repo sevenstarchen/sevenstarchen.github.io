@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ETCD常用命令及常见错误 | Lucky Chi的博客</title>
-    <meta property="og:title" content="ETCD常用命令及常见错误 - Lucky Chi的博客">
+    <title>LeetCode题目：求连续整数和为tag的所有数组 | Lucky Chi的博客</title>
+    <meta property="og:title" content="LeetCode题目：求连续整数和为tag的所有数组 - Lucky Chi的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-03-05T19:33:00&#43;08:00'>
+    <meta property="article:published_time" content='2020-03-07T00:24:22&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-03-05T19:33:00&#43;08:00'>
+    <meta property="article:modified_time" content='2020-03-07T00:24:22&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="ETCD常用命令及常见错误">
+    <meta name="description" content="LeetCode题目：求连续整数和为tag的所有数组">
         
     <meta name="author" content="Lucky-Chi">
-    <meta property="og:url" content="https://sevenstarchen.github.io/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <meta property="og:url" content="https://sevenstarchen.github.io/post/LeetCode/day01/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -74,16 +74,16 @@
     
     <article class="post">
         <header>
-            <h1 class="post-title">ETCD常用命令及常见错误</h1>
+            <h1 class="post-title">LeetCode题目：求连续整数和为tag的所有数组</h1>
         </header>
         <date class="post-meta meta-date">
-            2020年3月5日
+            2020年3月7日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://sevenstarchen.github.io/categories/Golang'>Golang</a></span>
+            <span class="meta-category"><a href='https://sevenstarchen.github.io/categories/LeetCode'>LeetCode</a></span>
             
         </div>
         
@@ -95,32 +95,87 @@
         
         
         <div class="post-content">
-            <h3 id="etcd-常用命令">etcd 常用命令</h3>
-<p><code> 1.启动：etcd</code></p>
-<p><code>2.删除：etcdctl --endpoints=http://127.0.0.1:2379 del name</code></p>
-<p><code>3.查找：etcdctl --endpoints=http://127.0.0.1:2379 get name</code></p>
-<p><code>4.新增：etcdctl --endpoints=http://127.0.0.1:2379 put name &quot;zhangsan&quot;</code></p>
-<h3 id="常见错误">常见错误</h3>
-<h4 id="q1使用goland连接etcd时出现">Q1.使用Goland连接etcd时出现</h4>
+            <h2 id="leetcode题目求连续整数和为tag的所有数组">LeetCode题目：求连续整数和为tag的所有数组</h2>
+<h3 id="描述">描述：</h3>
+<p><strong>输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。</strong></p>
+<pre><code class="language-test" data-lang="test">示例 1：
+
+输入：target = 9
+输出：[[2,3,4],[4,5]]
+示例 2：
+
+输入：target = 15
+输出：[[1,2,3,4,5],[4,5,6],[7,8]]
+
+
+限制：
+
+1 &lt;= target &lt;= 10^5
+</code></pre><h3 id="解题思路">解题思路</h3>
+<p><strong>使用滑块，设置一个左边届和一个右边界，两边界所有整数求和(包括边界值)的sum与tag比较。如sum小于tag，则右边界向右移动；如sun大于tag，则左边界向右移动。<!-- raw HTML omitted -->需要注意的是：</strong></p>
+<p><strong>1.  左右边界只能向右移动且左边届不能大于tag值的一半<!-- raw HTML omitted -->，因为当左边届为tag值一半时，和怎么都大于tag。</strong></p>
+<p><strong>2.  mid设置为tag/2+2是因为数组x起始值是0，当right为4时，x[right]为3，不这么设置会在x[left,right+1]时出现内存错误，只+1是纠正整除后余数问题，+2是解决数组定义初始值不同的问题</strong></p>
+<h3 id="代码">代码</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a61717;background-color:#e3d2d2">#</span> github.com<span style="color:#000;font-weight:bold">/</span>coreos<span style="color:#000;font-weight:bold">/</span>etcd<span style="color:#000;font-weight:bold">/</span>clientv3<span style="color:#000;font-weight:bold">/</span>balancer<span style="color:#000;font-weight:bold">/</span>resolver<span style="color:#000;font-weight:bold">/</span>endpoint
-vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<span style="color:#a61717;background-color:#e3d2d2">\</span>coreos<span style="color:#a61717;background-color:#e3d2d2">\</span>etcd<span style="color:#a61717;background-color:#e3d2d2">\</span>clientv3<span style="color:#a61717;background-color:#e3d2d2">\</span>balancer<span style="color:#a61717;background-color:#e3d2d2">\</span>resolver<span style="color:#a61717;background-color:#e3d2d2">\</span>endpoint<span style="color:#a61717;background-color:#e3d2d2">\</span>endpoint.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">114</span>:<span style="color:#099">78</span>: undefined: resolver.BuildOption
-vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<span style="color:#a61717;background-color:#e3d2d2">\</span>coreos<span style="color:#a61717;background-color:#e3d2d2">\</span>etcd<span style="color:#a61717;background-color:#e3d2d2">\</span>clientv3<span style="color:#a61717;background-color:#e3d2d2">\</span>balancer<span style="color:#a61717;background-color:#e3d2d2">\</span>resolver<span style="color:#a61717;background-color:#e3d2d2">\</span>endpoint<span style="color:#a61717;background-color:#e3d2d2">\</span>endpoint.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">182</span>:<span style="color:#099">31</span>: undefined: resolver.ResolveNowOption
-<span style="color:#a61717;background-color:#e3d2d2">#</span> github.com<span style="color:#000;font-weight:bold">/</span>coreos<span style="color:#000;font-weight:bold">/</span>etcd<span style="color:#000;font-weight:bold">/</span>clientv3<span style="color:#000;font-weight:bold">/</span>balancer<span style="color:#000;font-weight:bold">/</span>picker
-vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<span style="color:#a61717;background-color:#e3d2d2">\</span>coreos<span style="color:#a61717;background-color:#e3d2d2">\</span>etcd<span style="color:#a61717;background-color:#e3d2d2">\</span>clientv3<span style="color:#a61717;background-color:#e3d2d2">\</span>balancer<span style="color:#a61717;background-color:#e3d2d2">\</span>picker<span style="color:#a61717;background-color:#e3d2d2">\</span>err.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">37</span>:<span style="color:#099">44</span>: undefined: balancer.PickOptions
-vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<span style="color:#a61717;background-color:#e3d2d2">\</span>coreos<span style="color:#a61717;background-color:#e3d2d2">\</span>etcd<span style="color:#a61717;background-color:#e3d2d2">\</span>clientv3<span style="color:#a61717;background-color:#e3d2d2">\</span>balancer<span style="color:#a61717;background-color:#e3d2d2">\</span>picker<span style="color:#a61717;background-color:#e3d2d2">\</span>roundrobin_balanced.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">55</span>:<span style="color:#099">54</span>: undefined: balancer.PickOptions
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">findContinuousSequence</span>(target <span style="color:#458;font-weight:bold">int</span>) [][]<span style="color:#458;font-weight:bold">int</span> {
+   <span style="color:#000;font-weight:bold">var</span> ret [][]<span style="color:#458;font-weight:bold">int</span>
+   left<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">1</span>
+   right<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">2</span>
+   sum<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">0</span>
+   mid<span style="color:#000;font-weight:bold">:=</span>target<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">2</span>
+   x<span style="color:#000;font-weight:bold">:=</span><span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>,mid)
+   <span style="color:#000;font-weight:bold">for</span> i<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">0</span>;i&lt; <span style="color:#0086b3">len</span>(x);i<span style="color:#000;font-weight:bold">++</span>{
+      x[i]=i
+   }
+   <span style="color:#000;font-weight:bold">for</span> left<span style="color:#000;font-weight:bold">&lt;=</span>target<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> left&lt;right {
+      <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> left; i <span style="color:#000;font-weight:bold">&lt;=</span> right; i<span style="color:#000;font-weight:bold">++</span> {
+         sum <span style="color:#000;font-weight:bold">+=</span> i
+      }
+      <span style="color:#000;font-weight:bold">if</span> sum <span style="color:#000;font-weight:bold">==</span> target {
+         ret=<span style="color:#0086b3">append</span>(ret,x[left:right<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>])
+         left<span style="color:#000;font-weight:bold">++</span>
+      } <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> sum &lt; target {
+         right<span style="color:#000;font-weight:bold">++</span>
+      } <span style="color:#000;font-weight:bold">else</span> {
+         left<span style="color:#000;font-weight:bold">++</span>
+      }
+      sum=<span style="color:#099">0</span>
+   }
+   <span style="color:#000;font-weight:bold">return</span> ret
+}
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="a1将gomod中的googlegolangorggrpc-由127换为126">A1.将go.mod中的google.golang.org/grpc 由1.27换为1.26</h4>
+</div><h3 id="优化">优化</h3>
+<p><strong>每次都要重新遍历求和，可用求和公式直接求和，降低内存占用的提高计算时间</strong></p>
 
         </div>
 
@@ -133,15 +188,15 @@ vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<sp
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="/about/">关于我</a></li>
+        
+        <li><a href="/post/Movie/list/">电影清单</a></li>
+        
+        <li><a href="/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">ETCD常用命令及常见错误</a></li>
+        
         <li><a href="/post/Hugo/Hugo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub/">Hugo部署到GitHub</a></li>
         
         <li><a href="/post/ALiYun/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ALiYun%E6%9C%8D%E5%8A%A1%E5%99%A8/">MAC远程连接阿里云服务器</a></li>
-        
-        <li><a href="/post/GoLang/%E5%90%AF%E5%8A%A8zookeeper%E5%92%8Ckafka/">启动zookeeper和kafka</a></li>
-        
-        <li><a href="/archives/">归档</a></li>
-        
-        <li><a href="/search/">搜索</a></li>
         
     </ul>
 </div>
@@ -149,11 +204,7 @@ vendor<span style="color:#a61717;background-color:#e3d2d2">\</span>github.com<sp
 
         <div class="post-meta meta-tags">
             
-            <ul class="clearfix">
-                
-                <li><a href='https://sevenstarchen.github.io/tags/etcd'>etcd</a></li>
-                
-            </ul>
+            没有标签
             
         </div>
     </article>
