@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Lucky Chi的博客</title>
+    <link>https://sevenstarchen.github.io/post/</link>
+    <description>Recent content in Posts on Lucky Chi的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Mar 2020 15:17:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://sevenstarchen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>电影清单</title>
+      <link>https://sevenstarchen.github.io/post/Movie/list/</link>
+      <pubDate>Fri, 06 Mar 2020 15:17:16 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/Movie/list/</guid>
+      <description>电影清单 这一切，都要从一只蝙蝠说起。。。 在日常划水摸鱼时总喜欢看点电影，每次不是随波逐流去看近期热门就是去豆瓣上按评分由高到低选一两部来看，</description>
+    </item>
+    
+    <item>
+      <title>ETCD常用命令及常见错误</title>
+      <link>https://sevenstarchen.github.io/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>etcd 常用命令 1.启动：etcd 2.删除：etcdctl --endpoints=http://127.0.0.1:2379 del name 3.查找：etcdctl --endpoints=http://127.0.0.1:2379 get name 4.新增：etcdctl --endpoints=http://127.0.0.1:2379 put name &amp;quot;zhangsan&amp;quot; 常见错误 Q1.使用G</description>
+    </item>
+    
+    <item>
+      <title>Hugo部署到GitHub</title>
+      <link>https://sevenstarchen.github.io/post/Hugo/Hugo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/Hugo/Hugo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub/</guid>
+      <description>Hugo部署到GitHub 1.每次修改后重编译到public目录 hugo --theme=maupassant --baseUrl=&amp;quot;https://sevenstarchen.github.io&amp;quot; --buildDrafts 2.推送分支到GitHub cd public/ git add . git commit -m &amp;quot;简介&amp;quot</description>
+    </item>
+    
+    <item>
+      <title>MAC远程连接阿里云服务器</title>
+      <link>https://sevenstarchen.github.io/post/ALiYun/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ALiYun%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/ALiYun/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ALiYun%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>远程连接ALiYun服务器 sudo su - 切换root ssh -p 22 username@ip：其中22代表端口，username代表远程服务器用户名，ip为远程</description>
+    </item>
+    
+    <item>
+      <title>启动zookeeper和kafka</title>
+      <link>https://sevenstarchen.github.io/post/GoLang/%E5%90%AF%E5%8A%A8zookeeper%E5%92%8Ckafka/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/GoLang/%E5%90%AF%E5%8A%A8zookeeper%E5%92%8Ckafka/</guid>
+      <description>启动zookeeper和kafka 配置文件在/usr/local/etc/kafka中 启动文件在/usr/local/Cellar/kafk</description>
+    </item>
+    
+  </channel>
+</rss>

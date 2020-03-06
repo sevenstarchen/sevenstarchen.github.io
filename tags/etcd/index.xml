@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>etcd on Lucky Chi的博客</title>
+    <link>https://sevenstarchen.github.io/tags/etcd/</link>
+    <description>Recent content in etcd on Lucky Chi的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Mar 2020 19:33:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sevenstarchen.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ETCD常用命令及常见错误</title>
+      <link>https://sevenstarchen.github.io/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>etcd 常用命令 1.启动：etcd 2.删除：etcdctl --endpoints=http://127.0.0.1:2379 del name 3.查找：etcdctl --endpoints=http://127.0.0.1:2379 get name 4.新增：etcdctl --endpoints=http://127.0.0.1:2379 put name &amp;quot;zhangsan&amp;quot; 常见错误 Q1.使用G</description>
+    </item>
+    
+  </channel>
+</rss>

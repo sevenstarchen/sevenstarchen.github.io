@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kafka on Lucky Chi的博客</title>
+    <link>https://sevenstarchen.github.io/tags/kafka/</link>
+    <description>Recent content in kafka on Lucky Chi的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Mar 2020 19:33:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://sevenstarchen.github.io/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>启动zookeeper和kafka</title>
+      <link>https://sevenstarchen.github.io/post/GoLang/%E5%90%AF%E5%8A%A8zookeeper%E5%92%8Ckafka/</link>
+      <pubDate>Thu, 05 Mar 2020 19:33:00 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/GoLang/%E5%90%AF%E5%8A%A8zookeeper%E5%92%8Ckafka/</guid>
+      <description>启动zookeeper和kafka 配置文件在/usr/local/etc/kafka中 启动文件在/usr/local/Cellar/kafk</description>
+    </item>
+    
+  </channel>
+</rss>
