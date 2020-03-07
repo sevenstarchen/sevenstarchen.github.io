@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LeetCode题目：求连续整数和为tag的所有数组 | Lucky Chi的博客</title>
-    <meta property="og:title" content="LeetCode题目：求连续整数和为tag的所有数组 - Lucky Chi的博客">
+    <title>LeetCode题目：求队列最大值 | Lucky Chi的博客</title>
+    <meta property="og:title" content="LeetCode题目：求队列最大值 - Lucky Chi的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-03-07T00:24:22&#43;08:00'>
+    <meta property="article:published_time" content='2020-03-08T00:35:19&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-03-07T00:24:22&#43;08:00'>
+    <meta property="article:modified_time" content='2020-03-08T00:35:19&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="LeetCode题目：求连续整数和为tag的所有数组">
+    <meta name="description" content="LeetCode题目：求队列最大值">
         
     <meta name="author" content="Lucky-Chi">
-    <meta property="og:url" content="https://sevenstarchen.github.io/post/LeetCode/day01/">
+    <meta property="og:url" content="https://sevenstarchen.github.io/post/LeetCode/day02/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -74,10 +74,10 @@
     
     <article class="post">
         <header>
-            <h1 class="post-title">LeetCode题目：求连续整数和为tag的所有数组</h1>
+            <h1 class="post-title">LeetCode题目：求队列最大值</h1>
         </header>
         <date class="post-meta meta-date">
-            2020年3月7日
+            2020年3月8日
         </date>
         
         <div class="post-meta">
@@ -96,24 +96,34 @@
         
         <div class="post-content">
             <h3 id="描述">描述</h3>
-<p><strong>输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。</strong></p>
+<p><strong>请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、push_back 和 pop_front 的均摊时间复杂度都是O(1)。</strong></p>
+<p><strong>若队列为空，pop_front 和 max_value 需要返回 -1</strong></p>
 <pre><code class="language-test" data-lang="test">示例 1：
 
-输入：target = 9
-输出：[[2,3,4],[4,5]]
+输入: 
+[&quot;MaxQueue&quot;,&quot;push_back&quot;,&quot;push_back&quot;,&quot;max_value&quot;,&quot;pop_front&quot;,&quot;max_value&quot;]
+[[],[1],[2],[],[],[]]
+输出: [null,null,null,2,1,2]
 示例 2：
 
-输入：target = 15
-输出：[[1,2,3,4,5],[4,5,6],[7,8]]
+输入: 
+[&quot;MaxQueue&quot;,&quot;pop_front&quot;,&quot;max_value&quot;]
+[[],[],[]]
+输出: [null,-1,-1]
 
-
-限制：
-
-1 &lt;= target &lt;= 10^5
 </code></pre><h3 id="解题思路">解题思路</h3>
-<p><strong>使用滑块，设置一个左边届和一个右边界，两边界所有整数求和(包括边界值)的sum与tag比较。如sum小于tag，则右边界向右移动；如sun大于tag，则左边界向右移动。<!-- raw HTML omitted -->需要注意的是：</strong></p>
-<p><strong>1.  左右边界只能向右移动且左边届不能大于tag值的一半<!-- raw HTML omitted -->，因为当左边届为tag值一半时，和怎么都大于tag。</strong></p>
-<p><strong>2.  mid设置为tag/2+2是因为数组x起始值是0，当right为4时，x[right]为3，不这么设置会在x[left,right+1]时出现内存错误，只+1是纠正整除后余数问题，+2是解决数组定义初始值不同的问题</strong></p>
+<p><strong>这道题在我第一次看到题目时没读懂，看了评论才看懂。首先输入的数组其实是调用函数的顺序，第二个输入的数组是对应第一个数组中的函数传进去的值。正常求最大值是不难的，这道题在LeetCode中等级是中等，难度就在于问题的最后一句话：均摊时间复杂度都是O(1)</strong></p>
+<ol>
+<li>
+<p><strong>首先建立两个数组：主数组和副数组，主数组中存放push_back函数穿进去的所有值。</strong></p>
+</li>
+<li>
+<p><strong>副数组只存比当前传入参数大的数字与当前传入参数。</strong></p>
+<p>比如主数组和副数组都为[96,16]传入22</p>
+<p>则主数组为[96,16,22]，副数组为[96,22]</p>
+<p>这样就保证了副数组中的第一位总是主数组中的最大值。</p>
+</li>
+</ol>
 <h3 id="代码">代码</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -143,38 +153,90 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">findContinuousSequence</span>(target <span style="color:#458;font-weight:bold">int</span>) [][]<span style="color:#458;font-weight:bold">int</span> {
-   <span style="color:#000;font-weight:bold">var</span> ret [][]<span style="color:#458;font-weight:bold">int</span>
-   left<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">1</span>
-   right<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">2</span>
-   sum<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">0</span>
-   mid<span style="color:#000;font-weight:bold">:=</span>target<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">2</span>
-   x<span style="color:#000;font-weight:bold">:=</span><span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>,mid)
-   <span style="color:#000;font-weight:bold">for</span> i<span style="color:#000;font-weight:bold">:=</span><span style="color:#099">0</span>;i&lt; <span style="color:#0086b3">len</span>(x);i<span style="color:#000;font-weight:bold">++</span>{
-      x[i]=i
-   }
-   <span style="color:#000;font-weight:bold">for</span> left<span style="color:#000;font-weight:bold">&lt;=</span>target<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> left&lt;right {
-      <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> left; i <span style="color:#000;font-weight:bold">&lt;=</span> right; i<span style="color:#000;font-weight:bold">++</span> {
-         sum <span style="color:#000;font-weight:bold">+=</span> i
-      }
-      <span style="color:#000;font-weight:bold">if</span> sum <span style="color:#000;font-weight:bold">==</span> target {
-         ret=<span style="color:#0086b3">append</span>(ret,x[left:right<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>])
-         left<span style="color:#000;font-weight:bold">++</span>
-      } <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> sum &lt; target {
-         right<span style="color:#000;font-weight:bold">++</span>
-      } <span style="color:#000;font-weight:bold">else</span> {
-         left<span style="color:#000;font-weight:bold">++</span>
-      }
-      sum=<span style="color:#099">0</span>
-   }
-   <span style="color:#000;font-weight:bold">return</span> ret
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">type</span> MaxQueue <span style="color:#000;font-weight:bold">struct</span> {
+	Data 	[]<span style="color:#458;font-weight:bold">int</span>
+	Cdata	[]<span style="color:#458;font-weight:bold">int</span>
 }
+
+
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">Constructor</span>() MaxQueue {
+	max<span style="color:#000;font-weight:bold">:=</span>MaxQueue{
+		Data:<span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>,<span style="color:#099">0</span>),
+		Cdata:<span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>,<span style="color:#099">0</span>),
+	}
+	<span style="color:#000;font-weight:bold">return</span> max
+}
+
+
+<span style="color:#000;font-weight:bold">func</span> (this <span style="color:#000;font-weight:bold">*</span>MaxQueue) <span style="color:#900;font-weight:bold">Max_value</span>() <span style="color:#458;font-weight:bold">int</span> {
+		<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(this.Cdata) <span style="color:#000;font-weight:bold">==</span><span style="color:#099">0</span>{
+			<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>
+		}
+		<span style="color:#000;font-weight:bold">return</span> this.Cdata[<span style="color:#099">0</span>]
+}
+
+
+<span style="color:#000;font-weight:bold">func</span> (this <span style="color:#000;font-weight:bold">*</span>MaxQueue) <span style="color:#900;font-weight:bold">Push_back</span>(value <span style="color:#458;font-weight:bold">int</span>)  {
+		this.Data=<span style="color:#0086b3">append</span>(this.Data,value)
+		<span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">len</span>(this.Cdata)&gt;<span style="color:#099">0</span>{
+
+				<span style="color:#000;font-weight:bold">if</span> value&gt;this.Cdata[<span style="color:#0086b3">len</span>(this.Cdata)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]{
+					this.Cdata=this.Cdata[<span style="color:#099">0</span>:<span style="color:#0086b3">len</span>(this.Cdata)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]
+			}<span style="color:#000;font-weight:bold">else</span> {
+					<span style="color:#000;font-weight:bold">break</span>
+				}
+
+		}
+	this.Cdata=<span style="color:#0086b3">append</span>(this.Cdata,value)
+}
+
+
+<span style="color:#000;font-weight:bold">func</span> (this <span style="color:#000;font-weight:bold">*</span>MaxQueue) <span style="color:#900;font-weight:bold">Pop_front</span>() <span style="color:#458;font-weight:bold">int</span> {
+	<span style="color:#000;font-weight:bold">var</span> x <span style="color:#458;font-weight:bold">int</span>
+	<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(this.Data)<span style="color:#000;font-weight:bold">==</span><span style="color:#099">0</span>{
+		<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>
+	}
+	<span style="color:#000;font-weight:bold">if</span> this.Data[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">==</span>this.Cdata[<span style="color:#099">0</span>] {
+
+		this.Cdata=this.Cdata[<span style="color:#099">1</span>:]
+	}
+	x=this.Data[<span style="color:#099">0</span>]
+	this.Data=this.Data[<span style="color:#099">1</span>:]
+		<span style="color:#000;font-weight:bold">return</span> x
+}
+
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="优化">优化</h3>
-<p><strong>每次都要重新遍历求和，可用求和公式直接求和，降低内存占用，提高计算时间</strong></p>
+<p><strong>在MaxQueue中没有对数组长度进行预处理，有可能会报错。</strong></p>
 
         </div>
 
@@ -187,6 +249,8 @@
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="/post/LeetCode/day01/">LeetCode题目：求连续整数和为tag的所有数组</a></li>
+        
         <li><a href="/about/">关于我</a></li>
         
         <li><a href="/post/Movie/list/">电影清单</a></li>
@@ -194,8 +258,6 @@
         <li><a href="/post/GoLang/etcd-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">ETCD常用命令及常见错误</a></li>
         
         <li><a href="/post/Hugo/Hugo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub/">Hugo部署到GitHub</a></li>
-        
-        <li><a href="/post/ALiYun/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ALiYun%E6%9C%8D%E5%8A%A1%E5%99%A8/">MAC远程连接阿里云服务器</a></li>
         
     </ul>
 </div>
@@ -205,7 +267,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='https://sevenstarchen.github.io/tags/%E6%95%B0%E7%BB%84'>数组</a></li>
+                <li><a href='https://sevenstarchen.github.io/tags/%E9%98%9F%E5%88%97'>队列</a></li>
                 
             </ul>
             

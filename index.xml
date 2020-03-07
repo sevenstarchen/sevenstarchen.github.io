@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>LeetCode题目：求队列最大值</title>
+      <link>https://sevenstarchen.github.io/post/LeetCode/day02/</link>
+      <pubDate>Sun, 08 Mar 2020 00:35:19 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/LeetCode/day02/</guid>
+      <description>描述 请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、push_back 和 pop_front 的均摊时间复杂度都是O(1)。 若队列为空</description>
+    </item>
+    
+    <item>
       <title>LeetCode题目：求连续整数和为tag的所有数组</title>
       <link>https://sevenstarchen.github.io/post/LeetCode/day01/</link>
       <pubDate>Sat, 07 Mar 2020 00:24:22 +0800</pubDate>
