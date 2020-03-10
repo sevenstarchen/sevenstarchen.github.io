@@ -115,8 +115,8 @@
 </li>
 <li>
 <p><strong>利用动态规划解题，设数组dp[i]=x为所有面值的硬币凑出总值i的最优解需要使用x个硬币。那么在选择不同面值硬币时会出现两种情况,选还是不选:</strong></p>
-<p>1.选,则为<strong>dp[ i - coins [ j ] ] + 1</strong>， <strong>i - coins [ j ]<strong>为：当前总值为</strong>i</strong>，选用面值为<strong>coins [ j ]<strong>的硬币。此后数组</strong>dp</strong>变为<strong>dp[ i - coins [ j ] ]</strong>，表示凑出总值为<strong>i - coins [ j ]</strong> 需要多少个硬币，<strong>+1</strong> 是选用该硬币后，所需硬币个数要加一。</p>
-<p>2.不选，则**dp [ i ] <strong>还是</strong>dp [ i ] **</p>
+<p>1.选,则为<strong>dp[ i - coins [ j ] ] + 1</strong>， <strong>i - coins [ j ]</strong> 为：当前总值为 <strong>i</strong> ，选用面值为<strong>coins [ j ]<strong>的硬币。此后数组</strong>dp</strong>变为<strong>dp[ i - coins [ j ] ]</strong>，表示凑出总值为<strong>i - coins [ j ]</strong> 需要多少个硬币，<strong>+1</strong> 是选用该硬币后，所需硬币个数要加一。</p>
+<p>2.不选，则<strong>dp [ i ] 还是 dp [ i ]</strong></p>
 <p>3.最终比较选与不选的最优解，谁的值最小就为最优解</p>
 <p>4.遇到跳出条件，开始返回</p>
 </li>
