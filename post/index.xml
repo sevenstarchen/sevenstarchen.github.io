@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Lucky Chi的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Mar 2020 10:27:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2020 16:14:59 +0800</lastBuildDate>
     
 	<atom:link href="https://sevenstarchen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>动态规划问题</title>
+      <link>https://sevenstarchen.github.io/post/LeetCode/dp/</link>
+      <pubDate>Tue, 10 Mar 2020 16:14:59 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/LeetCode/dp/</guid>
+      <description>动态规划问题可以在暴力破解上来做，去掉暴力破解的重复性问题就是动态规划 一般采用自底向上，首先找到跳出条件，也就找到了底部的值，再逐级增加，最</description>
+    </item>
     
     <item>
       <title>LeetCode题目：零钱兑换</title>

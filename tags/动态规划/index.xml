@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动态规划 on Lucky Chi的博客</title>
+    <link>https://sevenstarchen.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+    <description>Recent content in 动态规划 on Lucky Chi的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 10 Mar 2020 16:14:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://sevenstarchen.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>动态规划问题</title>
+      <link>https://sevenstarchen.github.io/post/LeetCode/dp/</link>
+      <pubDate>Tue, 10 Mar 2020 16:14:59 +0800</pubDate>
+      
+      <guid>https://sevenstarchen.github.io/post/LeetCode/dp/</guid>
+      <description>动态规划问题可以在暴力破解上来做，去掉暴力破解的重复性问题就是动态规划 一般采用自底向上，首先找到跳出条件，也就找到了底部的值，再逐级增加，最</description>
+    </item>
+    
+  </channel>
+</rss>
