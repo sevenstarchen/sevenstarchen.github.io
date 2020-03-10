@@ -201,13 +201,13 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>针对这个题目的动态规划算法，首先看一个表：</p>
-<p><img src="../../../../Library/Application%2520Support/typora-user-images/image-20200310155951383.png" alt="image-20200310155951383"></p>
-<p>​									图源：bilibili up主@[正月点灯笼][https://www.bilibili.com/video/av18512769/?spm_id_from=333.788.videocard.0]</p>
+<p><img src="/image/dp.png" alt="动态规划"></p>
+<p>图源：bilibili up主@<a href="https://www.bilibili.com/video/av18512769/?spm_id_from=333.788.videocard.0">正月点灯笼</a></p>
 <p>​	<strong>此表定义了一个二维数组dp,dp [ i ] [ j ] 返回一个ture或者false表示使用所给数组的前i个数能否凑出数字j。</strong></p>
 <p>​	<strong>当只使用所给数组第一位即arr[0]时，只能凑出与它相同的数字，于是dp[0] [j]除了dp[0] [arr[0]]为true其他全应为false；同样的当所给数字为0时，不论怎么凑都满足条件，于是dp [i] [0]应全为True。另外当arr[i]&gt;j时，表明arr[i]不能选，于是遇到这种情况时dp[i] [j]=dp[i-1] [j]，以上就是所有的跳出条件。</strong></p>
 <p>​	<strong>接下来开始自底向上递增，使用一个双重循环让i和j不断增大，这个时候就出现选和不选两种情况了。选用当前的arr[i]，则dp[i] [j]变为dp[i-1] [j-arr[i]] ；不选则为dp[i] [j]=dp[i-1] [j]，只要两种情况有一种能返回true 则表示能用当前i凑出j。重复此步骤，将图中表格填完。</strong></p>
 <p>​	<strong>最右下角的值即为该题答案。</strong></p>
-<p>动态规划问题：[零钱兑换][https://sevenstarchen.github.io/post/LeetCode/coinChange/]</p>
+<h2 id="动态规划问题---零钱兑换httpssevenstarchengithubiopostleetcodecoinchange">动态规划问题：   <a href="https://sevenstarchen.github.io/post/LeetCode/coinChange/">零钱兑换</a></h2>
 <p>​</p>
 
         </div>
